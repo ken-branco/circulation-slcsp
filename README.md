@@ -1,6 +1,12 @@
 # circulation-slcsp
 Circulation Engineering Interview Pre-Work  
 
+## How to run  
+1. after cloning repo execute this command from root of repo  
+```shell script
+python ./slcsp_by_zip.py
+```
+
 Since the plan and zip data are large, we'll iterate over them just  
 once and store them in dictionary for fast lookups later on. 
 
@@ -13,7 +19,7 @@ once and store them in dictionary for fast lookups later on.
 5. add 2nd lowest rate to zip
 
 # Data Structures  
-zip_rate 
+zip_rate  
 zip code and Second Lowest Cost Silver Plan (SLCSP)  
 ```json
 {
@@ -22,7 +28,7 @@ zip code and Second Lowest Cost Silver Plan (SLCSP)
 ```
 zip_state_area  
 source: zips.csv  
-Every zip code can be in 1 or more state areas (counties)  
+Every zip code can be in 0, 1 or more state areas (counties)  
 ```json
 {
   "zip_code" : [
@@ -35,11 +41,11 @@ Every zip code can be in 1 or more state areas (counties)
 
 state_area_rate  
 source: plans.csv    
-Each state area should have just 1 Silver Plan Rate
+Each state area can have 1 or more Silver Plan rates
 ```json
 {
-  "state-area1" : 123.45,
-  "state-area2" : 678.90
+  "state-area1" : [123.45, 678.90],
+  "state-area2" : [345.67, 234.56]
 }
 ```  
 

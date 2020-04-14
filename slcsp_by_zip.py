@@ -1,3 +1,4 @@
+
 from collections import OrderedDict, defaultdict
 
 
@@ -51,12 +52,12 @@ def fill_zip_rates():
         pass
 
 
-# if __name__ == "main":
-load_file_data()
-fill_zip_rates()
+if __name__ == "__main__":
+    load_file_data()
+    fill_zip_rates()
 
-for zip, rate in zip_rate.items():
-    print(f"{zip},{rate}")
+    for zip, rate in zip_rate.items():
+        print(f"{zip},{rate}")
 
 
 pass
