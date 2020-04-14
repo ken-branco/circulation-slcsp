@@ -35,29 +35,33 @@ def load_file_data():
                 state_area_rate[state_area].append(rate)
 
 
-def fill_zip_rates():
-    for zip_code, rate in zip_rate.items():
-        silver_plan_rates = []
-        zip_state_areas = zip_state_area[zip_code]
+def calc_zip_rate(c_zip_code):
 
-        if not zip_state_areas or len(zip_state_areas) > 1:
-            zip_rate[zip_code] = ''
-            continue
-        for area in zip_state_areas: # should always be 1, but extract for key use below
-            silver_plan_rates.extend(state_area_rate[area])
+    zip_code_rate = ''
+    silver_plan_rates = []
+    zip_state_areas = zip_state_area[c_zip_code]
 
-        if silver_plan_rates:
-            zip_rate[zip_code] = sorted(silver_plan_rates)[1]
+    if not zip_state_areas or len(zip_state_areas) > 1:
+        return zip_code_rate
 
-        pass
+    for area in zip_state_areas: # should always be 1, but extract for key use below
+        silver_plan_rates.extend(state_area_rate[area])
+
+    if not silver_plan_rates:
+        return zip_code_rate
+
+    zip_code_rate = sorted(silver_plan_rates)[1]
+
+    return zip_code_rate
+
+
+def fill_zip_code_rate(f_zip_code):
+    zip_rate[f_zip_code] = calc_zip_rate(f_zip_code)
+    return f"{f_zip_code},{zip_rate[f_zip_code]}"
 
 
 if __name__ == "__main__":
     load_file_data()
-    fill_zip_rates()
 
-    for zip, rate in zip_rate.items():
-        print(f"{zip},{rate}")
-
-
-pass
+    for zip_code in zip_rate.keys():
+        print(fill_zip_code_rate(zip_code))
