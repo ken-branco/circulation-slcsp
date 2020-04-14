@@ -1,6 +1,6 @@
 # circulation-slcsp
 Circulation Engineering Interview Pre-Work  
-
+Implementation of the [Second Lowest Cost Silver Plan](https://homework.adhoc.team/slcsp/) exercise   
 ## How to run  
 1. after cloning repo execute this command from root of repo  
 ```shell script
