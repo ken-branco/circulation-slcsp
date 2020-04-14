@@ -1,11 +1,36 @@
 # circulation-slcsp
 Circulation Engineering Interview Pre-Work  
 Implementation of the [Second Lowest Cost Silver Plan](https://homework.adhoc.team/slcsp/) exercise   
+
+## Development Environment  
+Python 3.8.2  
+PyCharm Professional 2020.1 
+
 ## How to run  
-1. after cloning repo execute this command from root of repo  
+After cloning repo execute this command from root of repo  
 ```shell script
-python ./slcsp_by_zip.py
+python ./core/slcsp_by_zip.py
+```  
+
+## How to run tests  
+Make sure pytest is installed in your environment, run  
+```shell script
+pip freeze | pytest
+```  
+You should see output similar to  
+```shell script
+pytest==5.4.1  
 ```
+If no output from above command, install pytest  
+
+```shell script
+pip install pytest
+```  
+After cloning repo, execute this command from root of repo  
+
+```shell script
+pytest ./tests
+```  
 
 Since the plan and zip data are large, we'll iterate over them just  
 once and store them in dictionary for fast lookups later on. 

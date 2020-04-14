@@ -8,12 +8,12 @@ zip_state_area = OrderedDict()
 
 
 def load_file_data():
-    with open('files/slcsp.csv', 'r') as zc:
+    with open('./files/slcsp.csv', 'r') as zc:
         for line in zc.readlines()[1:]:
             (zip_code, _) = line.strip().split(',')
             zip_rate.update({zip_code: None})
 
-    with open('files/zips.csv', 'r') as zs:
+    with open('./files/zips.csv', 'r') as zs:
         for line in zs.readlines()[1:]:
             # no use for county and name
             (zip_code, state, _, _, rate_area ) = line.strip().split(',')
@@ -22,7 +22,7 @@ def load_file_data():
             else:
                 zip_state_area[zip_code].add(f"{state}-{rate_area}")
 
-    with open('files/plans.csv', 'r') as zp:
+    with open('./files/plans.csv', 'r') as zp:
         for line in zp.readlines()[1:]:
             # no use for county and name
             (_, state, metal_level, rate, rate_area ) = line.strip().split(',')
@@ -52,7 +52,7 @@ def calc_zip_rate(c_zip_code):
 
     zip_code_rate = sorted(silver_plan_rates)[1]
 
-    return zip_code_rate
+    return float(zip_code_rate)
 
 
 def fill_zip_code_rate(f_zip_code):
